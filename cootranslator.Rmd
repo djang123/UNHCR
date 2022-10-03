@@ -1,0 +1,515 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+coodata<-list("가나","가봉","감비아","그리스","기니","기니비사우","나이지리아","남수단공화국","남아프리카공화국",
+"네덜란드",
+"네팔",
+"니제르",
+"니카라과",
+"도미니카공화국",
+"라오스",
+"라이베리아",
+"라트비아",
+"러시아",
+"레바논",
+"레소토",
+"르완다",
+"리비아",
+"마카오",
+"말라위",
+"말레이시아",
+"말리",
+"멕시코",
+"모로코",
+"모리셔스",
+"모리타니",
+"모잠비크",
+"몬테네그로",
+"몰도바",
+"몽골",
+"무국적",
+"미국",
+"미얀마",
+"바레인",
+"방글라데시",
+"베냉",
+"베네수엘라",
+"베트남",
+"벨기에",
+"벨로루시",
+"보스니아- 헤르체고비나",
+"볼리비아",
+"부룬디",
+"부르키나파소",
+"불가리아",
+"브라질",
+"사우디아라비아",
+"세네갈",
+"세이셸",
+"소말리아",
+"수단",
+"스리랑카",
+"스웨덴",
+"스위스",
+"시리아",
+"시에라리온",
+"아르메니아",
+"아르헨티나",
+"아이티",
+"아제르바이잔",
+"아프가니스탄",
+"알바니아",
+"알제리",
+"앙골라",
+"에리트레아",
+"에스와티니",
+"에콰도르",
+"에티오피아",
+"엘살바도르",
+"영국",
+"예멘공화국",
+"온두라스",
+"요르단",
+"우간다",
+"우즈베키스탄",
+"우크라이나",
+"이라크",
+"이란",
+"이스라엘",
+"이집트",
+"인도",
+"인도네시아",
+"일본",
+"자메이카",
+"잠비아",
+"적도기니",
+"중국",
+"중앙아프리카공화국",
+"짐바브웨",
+"차드",
+"칠레",
+"카메룬",
+"카자흐스탄",
+"캄보디아",
+"캐나다",
+"케냐",
+"코트디부아르",
+"콜롬비아",
+"콩고",
+"콩고민주공화국",
+"쿠웨이트",
+"키르기즈",
+"타이",
+"타이완",
+"타지키스탄",
+"탄자니아",
+"터키",
+"토고",
+"투르크메니스탄",
+"튀니지",
+"파라과이",
+"파키스탄",
+"팔레스타인",
+"페루",
+"폴란드",
+"프랑스",
+"핀란드",
+"필리핀",
+"헝가리",
+"홍콩")
+
+```
+
+```{r}
+#cooconvert<-function(x){
+  #for (i in 1:length(x)){
+    #if(x[i]=="가나"){
+     # x[i]<-"GHA"
+    #}
+  #}
+#}
+
+  for (i in 1:length(coodata)){
+    if(coodata[i]=="가나"){
+      coodata[i]<-"GHA"
+    }
+    if(coodata[i]=="가봉"){
+      coodata[i]<-"GAB"
+    }
+    if(coodata[i]=="감비아"){
+      coodata[i]<-"GAM"
+    }
+    if(coodata[i]=="그리스"){
+      coodata[i]<-"GRE"
+    }
+    if(coodata[i]=="기니"){
+      coodata[i]<-"GUI"
+    }
+    if(coodata[i]=="기니비사우"){
+      coodata[i]<-"GNB"
+    }
+    if(coodata[i]=="나이지리아"){
+      coodata[i]<-"NIG"
+    }
+    if(coodata[i]=="남수단공화국"){
+      coodata[i]<-"SSD"
+    }
+    if(coodata[i]=="남아프리카공화국"){
+      coodata[i]<-"RSA"
+    }
+    if(coodata[i]=="네덜란드"){
+      coodata[i]<-"NET"
+    }
+    if(coodata[i]=="네팔"){
+      coodata[i]<-"NEP"
+    }
+    if(coodata[i]=="니제르"){
+      coodata[i]<-"NGR"
+    }
+    if(coodata[i]=="니카라과"){
+      coodata[i]<-"NIC"
+    }
+    if(coodata[i]=="도미니카공화국"){
+      coodata[i]<-"DOM"
+    }
+    if(coodata[i]=="라오스"){
+      coodata[i]<-"LAO"
+    }
+    if(coodata[i]=="라이베리아"){
+      coodata[i]<-"LBR"
+    }
+    if(coodata[i]=="라트비아"){
+      coodata[i]<-"LVA"
+    }
+    if(coodata[i]=="러시아"){
+      coodata[i]<-"RUS"
+    }
+    if(coodata[i]=="레바논"){
+      coodata[i]<-"LEB"
+    }
+    if(coodata[i]=="레소토"){
+      coodata[i]<-"LES"
+    }
+    if(coodata[i]=="르완다"){
+      coodata[i]<-"RWA"
+    }
+    if(coodata[i]=="리비아"){
+      coodata[i]<-"LBY"
+    }
+    if(coodata[i]=="마카오"){
+      coodata[i]<-"MAC"
+    }
+    if(coodata[i]=="말라위"){
+      coodata[i]<-"MLW"
+    }
+    if(coodata[i]=="말레이시아"){
+      coodata[i]<-"MLS"
+    }
+    if(coodata[i]=="말리"){
+      coodata[i]<-"MLI"
+    }
+    if(coodata[i]=="멕시코"){
+      coodata[i]<-"MEX"
+    }
+    if(coodata[i]=="모로코"){
+      coodata[i]<-"MOR"
+    }
+    if(coodata[i]=="모리셔스"){
+      coodata[i]<-"MTS"
+    }
+    if(coodata[i]=="모리타니"){
+      coodata[i]<-"MAU"
+    }
+    if(coodata[i]=="모잠비크"){
+      coodata[i]<-"MOZ"
+    }
+    if(coodata[i]=="몬테네그로"){
+      coodata[i]<-"MNE"
+    }
+    if(coodata[i]=="몰도바"){
+      coodata[i]<-"MDV"
+    }
+    if(coodata[i]=="몽골"){
+      coodata[i]<-"MNG"
+    }
+    if(coodata[i]=="무국적"){
+      coodata[i]<-"STA"
+    }
+    if(coodata[i]=="미국"){
+      coodata[i]<-"USA"
+    }
+    if(coodata[i]=="미얀마"){
+      coodata[i]<-"MYA"
+    }
+    if(coodata[i]=="바레인"){
+      coodata[i]<-"BAH"
+    }
+    if(coodata[i]=="방글라데시"){
+      coodata[i]<-"BGD"
+    }
+    if(coodata[i]=="베냉"){
+      coodata[i]<-"BEN"
+    }
+    if(coodata[i]=="베네수엘라"){
+      coodata[i]<-"VEN"
+    }
+    if(coodata[i]=="베트남"){
+      coodata[i]<-"SRV"
+    }
+    if(coodata[i]=="벨기에"){
+      coodata[i]<-"BEL"
+    }
+    if(coodata[i]=="벨로루시"){
+      coodata[i]<-"BLR"
+    }
+    if(coodata[i]=="보스니아- 헤르체고비나"){
+      coodata[i]<-"BSN"
+    }
+    if(coodata[i]=="볼리비아"){
+      coodata[i]<-"BOL"
+    }
+    if(coodata[i]=="부룬디"){
+      coodata[i]<-"BDI"
+    }
+    if(coodata[i]=="부르키나파소"){
+      coodata[i]<-"BKF"
+    }
+    if(coodata[i]=="불가리아"){
+      coodata[i]<-"BUL"
+    }
+    if(coodata[i]=="브라질"){
+      coodata[i]<-"BRA"
+    }
+    if(coodata[i]=="사우디아라비아"){
+      coodata[i]<-"SAU"
+    }
+    if(coodata[i]=="세네갈"){
+      coodata[i]<-"SEN"
+    }
+    if(coodata[i]=="세이셸"){
+      coodata[i]<-"SEY"
+    }
+    if(coodata[i]=="소말리아"){
+      coodata[i]<-"SOM"
+    }
+    if(coodata[i]=="수단"){
+      coodata[i]<-"SUD"
+    }
+    if(coodata[i]=="스리랑카"){
+      coodata[i]<-"LKA"
+    }
+    if(coodata[i]=="스웨덴"){
+      coodata[i]<-"SWE"
+    }
+    if(coodata[i]=="스위스"){
+      coodata[i]<-"SWI"
+    }
+    if(coodata[i]=="시리아"){
+      coodata[i]<-"SYR"
+    }
+    if(coodata[i]=="시에라리온"){
+      coodata[i]<-"SLE"
+    }
+    if(coodata[i]=="아르메니아"){
+      coodata[i]<-"ARM"
+    }
+    if(coodata[i]=="아르헨티나"){
+      coodata[i]<-"ARG"
+    }
+    if(coodata[i]=="아이티"){
+      coodata[i]<-"HAI"
+    }
+    if(coodata[i]=="아제르바이잔"){
+      coodata[i]<-"AZE"
+    }
+    if(coodata[i]=="아프가니스탄"){
+      coodata[i]<-"AFG"
+    }
+    if(coodata[i]=="알바니아"){
+      coodata[i]<-"ALB"
+    }
+    if(coodata[i]=="알제리"){
+      coodata[i]<-"ALG"
+    }
+    if(coodata[i]=="앙골라"){
+      coodata[i]<-"ANG"
+    }
+    if(coodata[i]=="에리트레아"){
+      coodata[i]<-"ERT"
+    }
+    if(coodata[i]=="에스와티니"){
+      coodata[i]<-"SWA"
+    }
+    if(coodata[i]=="에콰도르"){
+      coodata[i]<-"ECU"
+    }
+    if(coodata[i]=="에티오피아"){
+      coodata[i]<-"ETH"
+    }
+    if(coodata[i]=="엘살바도르"){
+      coodata[i]<-"SAL"
+    }
+    if(coodata[i]=="영국"){
+      coodata[i]<-"GBR"
+    }
+    if(coodata[i]=="예멘공화국"){
+      coodata[i]<-"YEM"
+    }
+    if(coodata[i]=="온두라스"){
+      coodata[i]<-"HON"
+    }
+    if(coodata[i]=="요르단"){
+      coodata[i]<-"JOR"
+    }
+    if(coodata[i]=="우간다"){
+      coodata[i]<-"UGA"
+    }
+    if(coodata[i]=="우즈베키스탄"){
+      coodata[i]<-"UZB"
+    }
+    if(coodata[i]=="우크라이나"){
+      coodata[i]<-"UKR"
+    }
+    if(coodata[i]=="이라크"){
+      coodata[i]<-"IRQ"
+    }
+    if(coodata[i]=="이란"){
+      coodata[i]<-"IRN"
+    }
+    if(coodata[i]=="이스라엘"){
+      coodata[i]<-"ISR"
+    }
+    if(coodata[i]=="이집트"){
+      coodata[i]<-"ARE"
+    }
+    if(coodata[i]=="인도"){
+      coodata[i]<-"IND"
+    }
+    if(coodata[i]=="인도네시아"){
+      coodata[i]<-"INS"
+    }
+    if(coodata[i]=="일본"){
+      coodata[i]<-"JPN"
+    }
+    if(coodata[i]=="자메이카"){
+      coodata[i]<-"JAM"
+    }
+    if(coodata[i]=="잠비아"){
+      coodata[i]<-"ZAM"
+    }
+    if(coodata[i]=="적도기니"){
+      coodata[i]<-"EGU"
+    }
+    if(coodata[i]=="중국"){
+      coodata[i]<-"CHI"
+    }
+    if(coodata[i]=="중앙아프리카공화국"){
+      coodata[i]<-"CAR"
+    }
+    if(coodata[i]=="짐바브웨"){
+      coodata[i]<-"ZIM"
+    }
+    if(coodata[i]=="차드"){
+      coodata[i]<-"CHD"
+    }
+    if(coodata[i]=="칠레"){
+      coodata[i]<-"CHL"
+    }
+    if(coodata[i]=="카메룬"){
+      coodata[i]<-"CMR"
+    }
+    if(coodata[i]=="카자흐스탄"){
+      coodata[i]<-"KAZ"
+    }
+    if(coodata[i]=="캄보디아"){
+      coodata[i]<-"CAM"
+    }
+    if(coodata[i]=="캐나다"){
+      coodata[i]<-"CAN"
+    }
+    if(coodata[i]=="케냐"){
+      coodata[i]<-"KEN"
+    }
+    if(coodata[i]=="코트디부아르"){
+      coodata[i]<-"ICO"
+    }
+    if(coodata[i]=="콜롬비아"){
+      coodata[i]<-"COL"
+    }
+    if(coodata[i]=="콩고"){
+      coodata[i]<-"COB"
+    }
+    if(coodata[i]=="콩고민주공화국"){
+      coodata[i]<-"COD"
+    }
+    if(coodata[i]=="쿠웨이트"){
+      coodata[i]<-"KUW"
+    }
+    if(coodata[i]=="키르기즈"){
+      coodata[i]<-"KGZ"
+    }
+    if(coodata[i]=="타이"){
+      coodata[i]<-"THA"
+    }
+    if(coodata[i]=="타이완"){
+      coodata[i]<-"TAIWAN"
+    }
+    if(coodata[i]=="타지키스탄"){
+      coodata[i]<-"TJK"
+    }
+    if(coodata[i]=="탄자니아"){
+      coodata[i]<-"TAN"
+    }
+    if(coodata[i]=="터키"){
+      coodata[i]<-"TUR"
+    }
+    if(coodata[i]=="토고"){
+      coodata[i]<-"TOG"
+    }
+    if(coodata[i]=="투르크메니스탄"){
+      coodata[i]<-"TKM"
+    }
+    if(coodata[i]=="튀니지"){
+      coodata[i]<-"TUN"
+    }
+    if(coodata[i]=="파라과이"){
+      coodata[i]<-"PAR"
+    }
+    if(coodata[i]=="파키스탄"){
+      coodata[i]<-"PAK"
+    }
+    if(coodata[i]=="팔레스타인"){
+      coodata[i]<-"GAZ"
+    }
+    if(coodata[i]=="페루"){
+      coodata[i]<-"PER"
+    }
+    if(coodata[i]=="폴란드"){
+      coodata[i]<-"POL"
+    }
+    if(coodata[i]=="프랑스"){
+      coodata[i]<-"FRA"
+    }
+    if(coodata[i]=="핀란드"){
+      coodata[i]<-"FIN"
+    }
+    if(coodata[i]=="필리핀"){
+      coodata[i]<-"PHI"
+    }
+    if(coodata[i]=="헝가리"){
+      coodata[i]<-"HUN"
+    }
+    if(coodata[i]=="홍콩"){
+      coodata[i]<-"HKG"
+    }
+  }
+
+df<-data.frame(unlist(coodata))
+write.csv(df,"C:\\coo.csv",row.names=F)
+```
+
