@@ -1,0 +1,84 @@
+```{r}
+library(officer)
+library(janitor)
+library(ggtext)
+library(tidyverse)
+library(tokenizers)
+library(readxl)
+library(data.table)
+library(dplyr)
+library(xlsx)
+library(openxlsx)
+master<-function(e,k){
+  doc<-read_docx(e)
+  content_tbl<-docx_summary(doc)
+  text<-content_tbl$text
+  remove<-""
+  text<-(text[text!=remove])
+sentences<-list()
+for (i in 1:length(text)){
+  sentences[i]<-tokenize_sentences(text[i])
+}
+sentencedf<-as.data.frame(unlist(sentences))
+sentencedf<-sentencedf[sentencedf$`unlist(sentences)`!=""&is.na(sentencedf)==F,]
+
+dockr<-read_docx(k)
+  content_tblkr<-docx_summary(dockr)
+  textkr<-content_tblkr$text
+  textkr<-(textkr[textkr!=remove])
+sentenceskr<-list()
+for (i in 1:length(textkr)){
+  sentenceskr[i]<-tokenize_sentences(textkr[i])
+}
+sentencedfkr<-as.data.frame(unlist(sentenceskr))
+sentencedfkr<-sentencedfkr[sentencedfkr$`unlist(sentenceskr)`!=""&is.na(sentencedfkr)==F,]
+dfmaster<-cbind(sentencedf,sentencedfkr)
+#return(rbind(sentencedf,sentencedfkr))
+#write.csv(dfmaster,"C:\\ML\\ml8master.csv",fileEncoding="cp949",row.names = F)
+write.csv(dfmaster,"C:\\ML\\ml22master.csv",row.names = F,col.names = F)
+#write.xlsx(dfmaster,"C:\\ML\\ml8master.xlsx",rowNames = F,colNames = F)
+}  
+master("C:\\ML\\ml22.docx","C:\\ML\\ml22k.docx")
+Warning in cbind(sentencedf, sentencedfkr) :
+  number of rows of result is not a multiple of vector length (arg 1)
+Warning in write.csv(dfmaster, "C:\\ML\\ml22master.csv", row.names = F,  :
+  attempt to set 'col.names' ignored
+#combine xlsx into csv
+
+file.path <- "C:\\complete"
+file.list <- list.files(path = file.path, pattern = '*.xlsx',full.names = T)
+file.listshort <- list.files(path = file.path, pattern = '*.xlsx',full.names = F)
+df.list <- lapply(file.list,read_excel,col_names=F)
+names(df.list)<-file.list
+```
+```{r}
+combiner<-function(x){
+  l<-list()
+  for (i in 1:length(x)){
+  #l[[i]]<-x[[i]]
+  l[[i]]<-cbind(rep(file.listshort[i],nrow(x[[i]])),x[[i]])
+  }
+  df<-bind_rows(l)
+  #colnames(df)<-c("English","Korean")
+  write.xlsx(df,"C:\\ML\\COI_Training_Batch1.xlsx",row.names = F,col.names = F)
+  #write.table(df,"C:\\ML\\COI_Training_Batch1.csv",row.names = F,col.names = F)
+}
+
+combiner(df.list)
+
+file.listshort
+
+
+ 
+l<-list() 
+  
+l[[1]]<-cbind(rep(file.listshort[1],nrow(df.list[[1]])),df.list[[1]])
+
+
+
+
+
+rep(file.listshort[1],nrow(df.list[[1]]))
+
+length(file.list[[1]])
+```
