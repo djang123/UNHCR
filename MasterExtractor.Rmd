@@ -39,10 +39,7 @@ write.csv(dfmaster,"C:\\ML\\ml22master.csv",row.names = F,col.names = F)
 #write.xlsx(dfmaster,"C:\\ML\\ml8master.xlsx",rowNames = F,colNames = F)
 }  
 master("C:\\ML\\ml22.docx","C:\\ML\\ml22k.docx")
-Warning in cbind(sentencedf, sentencedfkr) :
-  number of rows of result is not a multiple of vector length (arg 1)
-Warning in write.csv(dfmaster, "C:\\ML\\ml22master.csv", row.names = F,  :
-  attempt to set 'col.names' ignored
+
 #combine xlsx into csv
 
 file.path <- "C:\\complete"
